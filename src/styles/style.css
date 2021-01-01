@@ -1,0 +1,22 @@
+*, body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    background: #d1edf2;
+    text-align: center;
+    padding: 12px;
+}
+
+.logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+}
+
+.news_item {
+    padding: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid gray;
+}
