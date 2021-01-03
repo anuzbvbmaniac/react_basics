@@ -6,6 +6,7 @@ import DB from './db.json';
 import Header from "./components/header";
 import NewList from "./components/news_list";
 import Footer from "./components/footer";
+import Count from "./components/count";
 
 
 import './styles/style.css'
@@ -44,6 +45,8 @@ class App extends Component {
                 />
                 <Footer footerText={footerText}/>
                 <Lifecycle/>
+
+                <Count initialCount={0}/>
             </>
         );
     }
