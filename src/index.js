@@ -1,56 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 
-import DB from './db.json';
-
-import Header from "./components/header";
-import NewList from "./components/news_list";
-import Footer from "./components/footer";
+import './styles/style.css'
+import Title from "./components/title";
+import CountBtn from "./components/countBtn";
+import Age from "./components/age";
+import AgeBtn from "./components/ageBtn";
 import Count from "./components/count";
 
+const App = () => {
 
-import './styles/style.css'
-import Lifecycle from "./components/lifecycle";
+    const [count, setCount] = useState(0);
+    const [age, setAge] = useState(10);
 
-class App extends Component {
+    const incrementCount = useCallback(() => { // useCallback => Store Callback Function into memory / cache the function
+        setCount(prevCount => prevCount + 1);
+    }, []); // [count] => dependency,
 
-    state = {
-        news: DB,
-        filteredNews: DB,
-        footerText: 'I am a happy footer.'
-    }
+    const incrementAge = useCallback(() => {
+        setAge(prevAge => prevAge + 10);
+    }, []);
 
-    getKeyWords = (event) => {
-        let keywords = event.target.value;
-        let filteredNews = this.state.news.filter((item) => {
-            return item.title.indexOf(keywords) > -1;
-        });
-
-        this.setState({
-            filteredNews
-        });
-    }
-
-    render() {
-
-        const { footerText, filteredNews } = this.state
-
-        return (
-            <>
-                <Header
-                    keywords={this.getKeyWords}
-                />
-                <NewList
-                    news={filteredNews}
-                />
-                <Footer footerText={footerText}/>
-                <Lifecycle/>
-
-                <Count initialCount={0}/>
-            </>
-        );
-    }
-
+    return (
+        <>
+            <Title title={'Anuz Pandey'}/>
+            <Count count={count}/>
+            <CountBtn handleCount={incrementCount}/>
+            <hr/>
+            <Age age={age}/>
+            <AgeBtn handleAge={incrementAge}/>
+        </>
+    )
 }
 
 ReactDOM.render(<App/>, document.getElementById('root'));
