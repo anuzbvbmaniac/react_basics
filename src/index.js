@@ -1,56 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import User from "./components/user";
+import { MyProvider } from "./context";
 
-import DB from './db.json';
+/**
+ * Context gives the ability to use a centralized place where we can store data, retrieve data, store functions,
+ * and retrieve functions.
+ * Context is not a HOOK. It's something we get with React.
+ * To access the context, we can do it on a Class-Based Component and a Functional-Component. So, we get a HOOK. So we can
+ * connect to the context and retrieve the data we want.
+ */
 
-import Header from "./components/header";
-import NewList from "./components/news_list";
-import Footer from "./components/footer";
-import Count from "./components/count";
-
-
-import './styles/style.css'
-import Lifecycle from "./components/lifecycle";
-
-class App extends Component {
-
-    state = {
-        news: DB,
-        filteredNews: DB,
-        footerText: 'I am a happy footer.'
-    }
-
-    getKeyWords = (event) => {
-        let keywords = event.target.value;
-        let filteredNews = this.state.news.filter((item) => {
-            return item.title.indexOf(keywords) > -1;
-        });
-
-        this.setState({
-            filteredNews
-        });
-    }
-
-    render() {
-
-        const { footerText, filteredNews } = this.state
-
-        return (
-            <>
-                <Header
-                    keywords={this.getKeyWords}
-                />
-                <NewList
-                    news={filteredNews}
-                />
-                <Footer footerText={footerText}/>
-                <Lifecycle/>
-
-                <Count initialCount={0}/>
-            </>
-        );
-    }
-
+const App = () => {
+    return (
+        <>
+            <MyProvider>
+                <User/>
+            </MyProvider>
+        </>
+    )
 }
 
 ReactDOM.render(<App/>, document.getElementById('root'));
