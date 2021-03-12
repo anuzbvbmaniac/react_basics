@@ -1,22 +1,25 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Home from "./components/home";
-import Header from "./components/header";
-import PureComponent from "./components/pureComponent";
+// COMPONENTS
+import Header from './components/header';
+import CssTr from './components/CSStransition';
+import Tgroup from './components/Tgroup';
+import TransitionComp from './components/Transition';
 
 const App = () => {
-    return (
-        <BrowserRouter>
-            <Header />
-            <div className="container">
-                <Switch>
-                    <Route path={'/purecomp'} component={PureComponent}/>
-                    <Route path={'/'} component={Home}/>
-                </Switch>
-            </div>
-        </BrowserRouter>
-    );
-};
+  return(
+    <BrowserRouter>
+      <Header/>
+      <div className="container">
+        <Switch>
+          <Route path="/transition" component={TransitionComp}></Route>
+          <Route path="/csstransition" component={CssTr}></Route>
+          <Route path="/tgroup" component={Tgroup}></Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
+  )
+}
 
 export default App;
