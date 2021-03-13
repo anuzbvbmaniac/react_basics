@@ -3,23 +3,21 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // COMPONENTS
 import Header from './components/header';
-import CssTr from './components/CSStransition';
-import Tgroup from './components/Tgroup';
-import TransitionComp from './components/Transition';
+import Home from './components/home';
+import Movie from "./components/movie";
 
 const App = () => {
-  return(
-    <BrowserRouter>
-      <Header/>
-      <div className="container">
-        <Switch>
-          <Route path="/transition" component={TransitionComp}></Route>
-          <Route path="/csstransition" component={CssTr}></Route>
-          <Route path="/tgroup" component={Tgroup}></Route>
-        </Switch>
-      </div>
-    </BrowserRouter>
-  )
+    return (
+        <BrowserRouter>
+            <Header/>
+            <div className="container">
+                <Switch>
+                    <Route path="/movie" component={Movie}></Route>
+                    <Route path="/" component={Home}></Route>
+                </Switch>
+            </div>
+        </BrowserRouter>
+    )
 }
 
 export default App;
