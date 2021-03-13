@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { moviesList } from "../store/actions";
+import { moviesList, getUsers } from "../store/actions";
 
 class Home extends React.Component {
 
     getMoviesHandler() {
         this.props.dispatch(moviesList());
+    }
+
+    getUsersHandler() {
+        this.props.dispatch(getUsers());
     }
 
     render() {
@@ -25,6 +29,10 @@ class Home extends React.Component {
                 }
                 <button onClick={() => this.getMoviesHandler()}>
                     Get Movies
+                </button>
+
+                <button onClick={() => this.getUsersHandler()}>
+                    Get Users
                 </button>
             </>
         )

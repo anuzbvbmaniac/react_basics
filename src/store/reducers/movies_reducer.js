@@ -1,4 +1,4 @@
-import { MOVIE_DATA, MOVIES_LIST } from "../types";
+import { GET_USERS, MOVIE_DATA, MOVIES_LIST } from "../types";
 
 const DEFAULT_DATA = {
     id: 999,
@@ -12,6 +12,8 @@ export default function appReducer(state = DEFAULT_DATA, action) {
             return { ...state, moviesLists: action.payload };
         case MOVIE_DATA:
             return { ...state, movieData: action.payload };
+        case GET_USERS:
+            return { ...state, users: action.payload }
         default:
             return state;
     }
